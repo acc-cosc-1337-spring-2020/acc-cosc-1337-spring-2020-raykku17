@@ -15,3 +15,11 @@ RESULT:
 
 */
 
+void display_numbers(int num)
+{
+	for (int i = 0; i < num; ++i)
+	{
+		std::cout << i+1<< "\n";
+
+	}
+}
