@@ -70,21 +70,26 @@ c. return string
 
 string get_dna_complement(string dna)
 {
-	string A;
-	string T;
-	string G;
-	string C;
-
-	do
+	string get_reverse_string(string dna)
 	{
-		string dna;
-		cout << "Enter dna sequence: ";
-		cin >> dna;
-		cout << (get_reverse_string(dna));
-
-		cout << "complement is: ";
-		cin >> A; T; C; G;
-	} while ((string(A) == T)); (string(T) == A); (string(G) == C); (string(C) == G);
-
-	return string();
+		if (string (dna) == "A")
+		{
+			return "T";
+			break;
+		}
+		else if (string(dna) == "T")
+		{
+			return "A";
+			break;
+		}
+		else if (string(dna) == "G")
+		{
+			return "C";
+		}
+		else if (string(dna) == "C")
+		{
+			return "G";
+		}
+	}
+	return dna;
 }
