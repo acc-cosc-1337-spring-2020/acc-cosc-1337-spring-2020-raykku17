@@ -41,7 +41,10 @@ int main()
 				cout << "The DNA Complement is: " << get_dna_complement(dna) << "\n\n";
 			}
 			break;
+			default:
+				cout << "Invalid Input, Please press 1 or 2"<<"\n\n";
 			}
+
 		cout << "Continue?(y)" << "\n\n";
 		cin >> choice2;
 	} while (choice2 == 'y'||choice2=='Y');
