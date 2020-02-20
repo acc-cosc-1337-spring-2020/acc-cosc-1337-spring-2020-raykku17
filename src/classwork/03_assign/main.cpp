@@ -23,8 +23,6 @@ int main()
 		cout << "Continue: ";
 		cin >> choice;
 	} while (choice == 1);
-	{
-
-	}
+	
 	return 0;
 }

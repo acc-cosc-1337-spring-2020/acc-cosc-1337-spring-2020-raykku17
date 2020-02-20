@@ -70,26 +70,30 @@ c. return string
 
 string get_dna_complement(string dna)
 {
-	string get_reverse_string(string dna)
+	string complement = get_reverse_string(dna);
+	for (int i = 0; i < complement.length(); ++i)
 	{
-		if (string (dna) == "A")
+		if (complement[i] == 'A')
 		{
-			return "T";
-			break;
+			complement[i] = 'T';
+		
 		}
-		else if (string(dna) == "T")
+		else if (complement[i] == 'T')
 		{
-			return "A";
-			break;
+			complement[i] = 'A';
+	
 		}
-		else if (string(dna) == "G")
+		else if (complement[i] == 'G')
 		{
-			return "C";
+			complement[i] = 'C';
+		
 		}
-		else if (string(dna) == "C")
+		else if (complement[i] == 'C')
 		{
-			return "G";
+			complement[i] = 'G';
+	
 		}
+
 	}
-	return dna;
+	return complement;
 }
