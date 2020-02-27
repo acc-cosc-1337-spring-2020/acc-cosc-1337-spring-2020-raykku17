@@ -23,3 +23,11 @@ TEST_CASE("Find primes in a number")
 	REQUIRE(is_prime(43) == true);
 	REQUIRE(is_prime(44) == false);
 }
+TEST_CASE("Find prime numbers preceding an unput value")
+{
+
+	std::vector<int> num{ 2, 3, 5, 7 };
+	REQUIRE(vector_of_primes(10) == num);
+	std::vector<int> num1{ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 };
+	REQUIRE(vector_of_primes(50) == num1);
+}

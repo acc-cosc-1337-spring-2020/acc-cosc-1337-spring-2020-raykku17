@@ -72,7 +72,17 @@ Example given number 10 returns a vector with elements 2,3,5,7,
 Make sure to use the is_prime function to determine if current 
 number is prime.
 */
-int vector_of_primes(std::vector<int> nums)
+std::vector<int> vector_of_primes(int num)
 {
-	return 0;
+	vector<int> prime;
+	for (int i = 2; i <= num; i++) 
+	{
+		if (is_prime(i))
+		{
+			prime.push_back(i);
+		}
+			
+	}
+	
+	return vector<int> (prime);
 }
