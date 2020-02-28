@@ -27,8 +27,14 @@ int main()
 		{
 		case 1:
 		{
+			cout << "For values: ";
+			for (int i = 0;i < max.size();i++)
+			{
+				cout << max[i] << (' ');
+			}
 			cout << "The max number is: ";
 			cout << get_max_from_vector(max) << '\n';
+			
 		}
 		break;
 		case 2:
