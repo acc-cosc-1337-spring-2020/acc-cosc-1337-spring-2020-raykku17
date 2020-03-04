@@ -9,9 +9,10 @@ TEST_CASE("Test can’t call mark board before start game")
 
 {
 
-	tictactoe position("1");
+	tictactoe game;
+	
 
-	REQUIRE_THROWS_AS(position.mark_board(1), Invalid);
+	REQUIRE_THROWS_AS(game.mark_board(1), Invalid);
 	
 
 }
