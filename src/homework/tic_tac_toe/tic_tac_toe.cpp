@@ -1,12 +1,18 @@
 //cpp
 #include "tic_tac_toe.h"
 #include <stdlib.h>
+#include <iostream>
+using std::cin; using std::cout;
 
 void tictactoe::start_game(string first_player)
 
 {
-	player == first_player;
-	if (player != "O" || player != "X")
+
+	if (first_player == "X" || first_player == "O")
+	{
+		player = first_player;
+	}
+	else 
 	{
 		throw Invalid("Player must be X or O");
 	}
@@ -14,28 +20,25 @@ void tictactoe::start_game(string first_player)
 
 void tictactoe::mark_board(int position)
 {
-	void start_game();
-	if (position = rand() % 9 + 1)
-	{
-		set_next_player();
-	}
-	else if (position != rand() % 9 + 1)
+	
+	if (position<1||position>9)
 	{
 		throw Invalid("Number must be between 1 and 9.");
 	}
-	else
+	if(player.empty())
 	{
 		throw Invalid("Must start game first.");
 	}
-	
+	set_next_player();
 }
 
 void tictactoe::set_next_player()
 {
-	
-	if (player =="X")
+
+	if (player == "X")
 	{
 		player = 'O';
+		
 	}
 	else
 	{
