@@ -55,3 +55,9 @@ TEST_CASE("Test BankAccount initial deposit <25")
 	REQUIRE(account.get_balance() == 0);
 	REQUIRE_THROWS_AS(account.open(24), Invalid);
 }
+TEST_CASE("Test the addition of a static variable representing interest rate")
+{
+	BankAccount account;
+	REQUIRE(account.get_rate() == 0.025);
+
+}

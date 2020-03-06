@@ -1,19 +1,24 @@
 #include "bank_account.h"
 #include <iostream>
 #include <vector>
-using std::cout; using std::cin;
+using std::cout;using std::cin;
+
 
 int main()
 {
-	BankAccount a;
+	BankAccount a(100);
 	cout << a.get_balance();
 
-	std::vector<BankAccount> accounts{BankAccount(100),
-		BankAccount(200)};
+	//std::vector<BankAccount> accounts{BankAccount(100),
+		//BankAccount(200)};
 	
 	BankAccount account(500);
+	cin >> account;
+	cout << account;
+
+	display_balance(account);
 	auto balance = account.get_balance(); //This balance is different from the one in .h file
-	cout << "Blance is: ";
+	cout << "Balance is: ";
 	cout << balance;
 
 	auto amount{ 0 };
