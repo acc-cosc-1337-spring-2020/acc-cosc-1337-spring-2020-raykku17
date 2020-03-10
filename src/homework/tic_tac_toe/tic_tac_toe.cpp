@@ -37,12 +37,12 @@ void tictactoe::set_next_player()
 
 	if (player == "X")
 	{
-		get_player() = 'O';
+		player = "O";
 		
 	}
 	else
 	{
-		get_player() = 'X';
+		player = "X";
 	}
 	
 	
