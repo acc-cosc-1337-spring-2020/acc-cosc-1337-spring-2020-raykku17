@@ -4,6 +4,8 @@
 #include <iostream>
 using std::cin; using std::cout;
 
+
+
 void tictactoe::start_game(string first_player)
 
 {
@@ -11,6 +13,7 @@ void tictactoe::start_game(string first_player)
 	if (first_player == "X" || first_player == "O")
 	{
 		player = first_player;
+		clear_board();
 	}
 	else 
 	{
@@ -29,7 +32,18 @@ void tictactoe::mark_board(int position)
 	{
 		throw Invalid("Must start game first.");
 	}
+	pegs[position - 1] = player;
 	set_next_player();
+
+}
+
+void tictactoe::display_board() const
+{
+	for (int i = 0; i < 9; i+= 3)
+	{
+		cout << pegs[i] << "|"<< pegs[i + 1] << "|"<< pegs[i + 2] << "\n";
+
+	}
 }
 
 void tictactoe::set_next_player()
@@ -46,4 +60,26 @@ void tictactoe::set_next_player()
 	}
 	
 	
+}
+
+bool tictactoe::check_board_full()
+{
+	for(std::size_t i = 0;i < pegs.size();++i)
+		if (pegs[i] == " ")
+		{
+			return false;
+		}
+	return true;
+}
+
+void tictactoe::clear_board()
+{
+	for (auto &peg : pegs)
+	{
+		peg = " ";
+	}
+}
+bool tictactoe::game_over()
+{
+	return check_board_full();
 }

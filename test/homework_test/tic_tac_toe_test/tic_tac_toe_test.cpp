@@ -49,3 +49,17 @@ TEST_CASE("Test start game with flow O")
 	game.mark_board(4);
 	REQUIRE(game.get_player() == "X");
 }
+TEST_CASE("Test game ends when board is full")
+{
+	tictactoe game;
+	game.start_game("X");
+
+	
+	for (int i = 1;i < 9; ++i)
+	{
+		game.mark_board(i);
+		REQUIRE(game.game_over() == false);
+	}
+	game.mark_board(9);
+	REQUIRE(game.game_over() == true);
+}

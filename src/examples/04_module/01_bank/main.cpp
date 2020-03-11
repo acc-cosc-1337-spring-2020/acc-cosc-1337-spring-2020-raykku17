@@ -1,4 +1,4 @@
-#include "bank_account.h"
+#include "checking_account.h"
 #include <iostream>
 #include <vector>
 using std::cout;using std::cin;
@@ -6,8 +6,7 @@ using std::cout;using std::cin;
 
 int main()
 {
-	BankAccount a(100);
-	cout << a.get_balance();
+	CheckingAccount checking;
 
 	//std::vector<BankAccount> accounts{BankAccount(100),
 		//BankAccount(200)};
