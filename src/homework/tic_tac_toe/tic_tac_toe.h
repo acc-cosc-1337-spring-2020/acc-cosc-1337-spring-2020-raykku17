@@ -13,6 +13,7 @@ public:
 	void mark_board(int position);
 	string get_player() const { return player; }
 	void display_board() const;
+	string get_winner() const { return winner; }
 
 
 private:
@@ -21,7 +22,11 @@ private:
 	void clear_board();
 	string player;
 	std::vector<std::string> pegs{ 9, " " };
-
+	string winner;
+	bool check_column_win();
+	bool check_row_win();
+	bool check_diagonal_win();
+	void set_winner();
 };
 class Invalid
 {
