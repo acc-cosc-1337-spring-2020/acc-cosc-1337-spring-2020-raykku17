@@ -88,9 +88,10 @@ bool tictactoe::game_over()
 		set_winner();
 		return true;
 	}
-	else
+	else if(check_board_full()==true)
 	{
 		winner = "C";
+		return true;
 
 	}
 	return check_board_full();

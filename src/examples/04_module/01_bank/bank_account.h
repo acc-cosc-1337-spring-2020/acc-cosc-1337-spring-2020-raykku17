@@ -12,7 +12,7 @@ public: //Available to anyone
 	explicit BankAccount(int b) : balance{ b } { }   //THIS IS THE CONSTRUCTOR; must be named the same as class; 
 											//the last curly brace is necessary because it is a function implentation 
 											//although there is nothing in there, they tell the program what it is
-	int get_balance() const { return balance; } //assures that the function cannot be modified; is read only
+	virtual int get_balance() const { return balance; } //assures that the function cannot be modified; is read only
 	void deposit(int amount);
 	void withdraw(int amount);
 	void open(int amount);
