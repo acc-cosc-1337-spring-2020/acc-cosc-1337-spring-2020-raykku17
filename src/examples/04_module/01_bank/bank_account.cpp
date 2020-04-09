@@ -6,6 +6,11 @@ using std::cout;
 
 //bank_account.cpp
 
+int BankAccount::get_balance() const
+{
+	return balance;
+}
+
 void BankAccount::deposit(int amount) //the "BankAccount::" tells the program it belongs to that class
 {
 	if (amount > 0)
