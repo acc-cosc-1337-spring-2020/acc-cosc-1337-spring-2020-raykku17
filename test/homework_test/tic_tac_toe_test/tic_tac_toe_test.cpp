@@ -228,7 +228,7 @@ TEST_CASE("Test no winners", "[X starts with no winners]")
 	board.mark_board(7);//X
 	REQUIRE(board.game_over() == false);
 	board.mark_board(9);//O
-	REQUIRE(board.game_over() == false);
+	REQUIRE(board.game_over() == false); 
 	board.mark_board(8);//X
 	REQUIRE(board.game_over() == true);
 	REQUIRE(board.get_winner() == "C");
