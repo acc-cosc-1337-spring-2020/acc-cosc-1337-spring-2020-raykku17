@@ -1,14 +1,17 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include <iostream>
 using std::cin; using std::cout;
 int main() 
 {
 	tictactoe game;
+	TicTacToeManager manager;
 	char choice;
 	string letter;
-	int position;
+
 	int player;
 	bool win= false;
+
 
 	do
 	{
@@ -30,27 +33,15 @@ int main()
 	
 		do
 		{
-			
+	
 		
-			cout << "Enter position between 1 and 9: ";
-			cin >> position;
-			cout << position << (' ') << "is" << (" ") << letter << "\n";
-			
-			try
-			{
-				game.mark_board(position);
-				
-			}
-			catch (Invalid e)
-			{
-				cout << e.get_error() << "\n";
-			}
-			game.display_board();
+			cout << game;
+			cin >> game;
 			game.game_over();
-			win = game.game_over();
+
 		
-		} while (win == false );
-		
+		} while (game.game_over() == false );
+		cout << game;
 		cout << "winner is " << game.get_winner() << "\n";
 		cout << "Continue?(y)" << "\n\n";
 		cin >> choice;

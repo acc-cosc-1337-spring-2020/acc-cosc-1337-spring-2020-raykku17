@@ -37,16 +37,6 @@ void tictactoe::mark_board(int position)
 
 }
 
-void tictactoe::display_board() const
-{
-	for (int i = 0; i < 9; i+= 3)
-	{
-		cout << pegs[i] << "|"<< pegs[i + 1] << "|"<< pegs[i + 2] << "\n";
-
-	}
-}
-
-
 
 void tictactoe::set_next_player()
 {
@@ -204,16 +194,25 @@ std::istream & operator>>(std::istream & in, tictactoe & d)
 	int position;
 	cout << "Enter Position: ";
 	in >> position;
-	d.mark_board(position);
+	try
+	{
+		d.mark_board(position);
+
+	}
+	catch (Invalid e)
+	{
+		cout << e.get_error() << "\n";
+	}
+
 	return in;
 }
 
 std::ostream & operator<<(std::ostream & out, const tictactoe & d)
 {
-	char pegs[3][3];
+
 	for (int i = 0; i < 9; i += 3)
 	{
-		out << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
+		out << d.pegs[i] << "|" << d.pegs[i + 1] << "|" << d.pegs[i + 2] << "\n";
 
 	}
 	return out;

@@ -4,7 +4,11 @@
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
-
+	for (auto& game : manager.games)
+	{
+		out << manager.get_winner();
+		
+	}
 	return out;
 }
 
