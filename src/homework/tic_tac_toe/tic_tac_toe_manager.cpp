@@ -4,10 +4,23 @@
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
+	int x_win{ 0 }, o_win{ 0 }, tie{ 0 };
 	for (auto& game : manager.games)
 	{
-		out << manager.get_winner();
-		
+		out << game;
+		if (game.get_winner() == "X")
+		{
+			x_win = x_win + 1;
+		}
+		else if (game.get_winner() == "O")
+		{
+			o_win = o_win + 1;
+		}
+		else
+		{
+			tie=tie+1;
+		}
+		out << "X wins: " << x_win << ", O wins: " << o_win << ", ties: " << tie << "\n";
 	}
 	return out;
 }

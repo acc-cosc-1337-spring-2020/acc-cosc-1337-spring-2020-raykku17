@@ -41,14 +41,18 @@ int main()
 
 		
 		} while (game.game_over() == false );
+		manager.save_game(game);
 		cout << game;
 		cout << "winner is " << game.get_winner() << "\n";
+		cout << manager;
 		cout << "Continue?(y)" << "\n\n";
 		cin >> choice;
 		
 	} while (choice == 'y' || choice == 'Y');
+	
+	
+	cout << manager;
 
-
-	system("PAUSE");
+	
 	return 0;
 }

@@ -80,6 +80,7 @@ TEST_CASE("Test win by first column", "[X wins first column]")
 	board.mark_board(7);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by second column", "[X wins second column]")
 { 
@@ -97,6 +98,7 @@ TEST_CASE("Test win by second column", "[X wins second column]")
 	board.mark_board(8);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by third column", "[X wins third column]")
 {
@@ -114,6 +116,7 @@ TEST_CASE("Test win by third column", "[X wins third column]")
 	board.mark_board(9);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by first row", "[X wins first row")
 {
@@ -131,6 +134,7 @@ TEST_CASE("Test win by first row", "[X wins first row")
 	board.mark_board(3);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by second row", "[X wins second row]")
 {
@@ -148,6 +152,7 @@ TEST_CASE("Test win by second row", "[X wins second row]")
 	board.mark_board(6);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by third row", "[X wins third row]")
 {
@@ -165,6 +170,7 @@ TEST_CASE("Test win by third row", "[X wins third row]")
 	board.mark_board(9);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by first diagonal", "[X wins first diagonal]")
 {
@@ -182,6 +188,7 @@ TEST_CASE("Test win by first diagonal", "[X wins first diagonal]")
 	board.mark_board(9);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 {
@@ -199,6 +206,7 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 	board.mark_board(3);//X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 TEST_CASE("Test no winners", "[X starts with no winners]")
 {
@@ -223,4 +231,5 @@ TEST_CASE("Test no winners", "[X starts with no winners]")
 	REQUIRE(board.game_over() == false);
 	board.mark_board(8);//X
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "C");
 }
