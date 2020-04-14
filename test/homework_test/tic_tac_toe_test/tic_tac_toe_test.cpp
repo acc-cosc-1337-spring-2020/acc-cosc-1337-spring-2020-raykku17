@@ -1,6 +1,8 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
@@ -66,7 +68,7 @@ TEST_CASE("Test game ends when board is full")
 }
 TEST_CASE("Test win by first column", "[X wins first column]")
 { 
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1);//X        
@@ -84,7 +86,7 @@ TEST_CASE("Test win by first column", "[X wins first column]")
 }
 TEST_CASE("Test win by second column", "[X wins second column]")
 { 
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(2);//X        
@@ -102,7 +104,7 @@ TEST_CASE("Test win by second column", "[X wins second column]")
 }
 TEST_CASE("Test win by third column", "[X wins third column]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(3);//X        
@@ -120,7 +122,7 @@ TEST_CASE("Test win by third column", "[X wins third column]")
 }
 TEST_CASE("Test win by first row", "[X wins first row")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1);//X        
@@ -138,7 +140,7 @@ TEST_CASE("Test win by first row", "[X wins first row")
 }
 TEST_CASE("Test win by second row", "[X wins second row]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(4);//X        
@@ -156,7 +158,7 @@ TEST_CASE("Test win by second row", "[X wins second row]")
 }
 TEST_CASE("Test win by third row", "[X wins third row]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(7);//X        
@@ -174,7 +176,7 @@ TEST_CASE("Test win by third row", "[X wins third row]")
 }
 TEST_CASE("Test win by first diagonal", "[X wins first diagonal]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1);//X        
@@ -192,7 +194,7 @@ TEST_CASE("Test win by first diagonal", "[X wins first diagonal]")
 }
 TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(7);//X        
@@ -210,7 +212,7 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 }
 TEST_CASE("Test no winners", "[X starts with no winners]")
 {
-	tictactoe board;
+	tictactoe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1);//X        
@@ -230,6 +232,265 @@ TEST_CASE("Test no winners", "[X starts with no winners]")
 	board.mark_board(9);//O
 	REQUIRE(board.game_over() == false); 
 	board.mark_board(8);//X
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "C");
+}
+TEST_CASE("Test win by first column 4", "[X wins first column]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by second column 4", "[X wins second column]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by third column 4", "[X wins third column]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by fourth column 4", "[X wins third column]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by first row 4", "[X wins first row")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by second row 4", "[X wins second row]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by third row 4", "[X wins third row]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by fourth  row 4", "[X wins third row]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by first diagonal 4", "[X wins first diagonal]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test win by second diagonal 4", "[X wins second diagonal]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13);//X
+	//X wins
+	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
+}
+TEST_CASE("Test no winners 4", "[X starts with no winners]")
+{
+	tictactoe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1);//X        
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6);//X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12);//O 
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13);//O  
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14);//O          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15);//X          
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16);//O 
 	REQUIRE(board.game_over() == true);
 	REQUIRE(board.get_winner() == "C");
 }
