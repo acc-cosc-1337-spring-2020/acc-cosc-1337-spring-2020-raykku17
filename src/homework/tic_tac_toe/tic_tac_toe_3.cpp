@@ -9,7 +9,25 @@ Win by column if and return true if
 else
 false
 */
-bool tictactoe::check_column_win()
+
+/*
+class function check_row_win
+Win by row if
+0, 1, 2 are equal
+3,4,5 are equal
+6,7,8 are equal
+*/
+
+/*
+class function check_diagonal_win
+Win diagonally
+0 1 2
+3 4 5
+6 7 8
+*/
+
+
+bool tictactoe3::check_column_win()
 {
 	if (pegs[0] == "X"&& pegs[3] == "X" && pegs[6] == "X")
 	{
@@ -41,14 +59,7 @@ bool tictactoe::check_column_win()
 	}
 }
 
-/*
-class function check_row_win
-Win by row if
-0, 1, 2 are equal
-3,4,5 are equal
-6,7,8 are equal
-*/
-bool tictactoe::check_row_win()
+bool tictactoe3::check_row_win()
 {
 	if (pegs[0] == "X"&& pegs[1] == "X" && pegs[2] == "X")
 	{
@@ -80,15 +91,7 @@ bool tictactoe::check_row_win()
 	}
 }
 
-
-/*
-class function check_diagonal_win
-Win diagonally
-0 1 2
-3 4 5
-6 7 8
-*/
-bool tictactoe::check_diagonal_win()
+bool tictactoe3::check_diagonal_win()
 {
 	if (pegs[0] == "X"&& pegs[4] == "X" && pegs[8] == "X")
 	{
@@ -111,3 +114,4 @@ bool tictactoe::check_diagonal_win()
 		return false;
 	}
 }
+

@@ -4,15 +4,16 @@
 #include <iostream>
 #include <vector>
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_3.h"
 
 class TicTacToeManager: public tictactoe
 {
 public:
 	
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
-	void save_game(const tictactoe b);
+	void save_game(tictactoe b);
 private:
-	std::vector<std::reference_wrapper<tictactoe>>games;
+	std::vector<std::reference_wrapper <tictactoe>>games;
 	int o_win{ 0 };
 	int x_win{ 0 };
 	int tie{ 0 };

@@ -12,15 +12,16 @@ class tictactoe
 {
 public:
 	tictactoe() = default;
-	explicit tictactoe(int s) : pegs(s*s) { " "; }
+	explicit tictactoe(int s) : pegs(s*s, " ") { }
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int position);
 	string get_player() const { return player; }
-	
+
 	string get_winner() const { return winner; }
 	friend std::istream& operator>>(std::istream& in, tictactoe& d);
 	friend std::ostream& operator<<(std::ostream& out, const tictactoe& d);
+
 protected:
 	std::vector<std::string> pegs{ 9, " " };
 	virtual bool check_column_win();
@@ -32,12 +33,10 @@ private:
 
 	void clear_board();
 	string player;
-	
-	string winner;
-	
-	void set_winner();
 
-	std::vector<std::reference_wrapper<tictactoe>>games;
+	string winner;
+
+	void set_winner();
 };
 class Invalid
 {

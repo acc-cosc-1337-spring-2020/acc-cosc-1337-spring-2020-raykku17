@@ -148,7 +148,7 @@ std::ostream & operator<<(std::ostream & out, const tictactoe & d)
 	{
 		for (int i = 0; i < 16; i += 4)
 		{
-			out << d.pegs[i] << "|" << d.pegs[i + 1] << "|" << d.pegs[i + 2] <<d.pegs[i+3]<< "\n";
+			out << d.pegs[i] << "|" << d.pegs[i + 1] << "|" << d.pegs[i + 2]<<"|" <<d.pegs[i+3]<< "\n";
 
 		}
 	}

@@ -8,11 +8,11 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 	for (auto& game : manager.games)
 	{
 		out << game;
-		if (game.get_winner() == "X")
+		if (game.get().get_winner()== "X")
 		{
 			x_win = x_win + 1;
 		}
-		else if (game.get_winner() == "O")
+		else if (game.get().get_winner() == "O")
 		{
 			o_win = o_win + 1;
 		}
@@ -25,7 +25,7 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 	return out;
 }
 
-void TicTacToeManager::save_game(const tictactoe b)
+void TicTacToeManager::save_game(tictactoe b)
 {
 	games.push_back(b);
 	update_winner_count(get_winner());
