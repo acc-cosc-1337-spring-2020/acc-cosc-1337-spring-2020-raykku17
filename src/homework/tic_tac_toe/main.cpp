@@ -37,20 +37,20 @@ int main()
 				}
 				do
 				{
-					winner.save_game(game3);
+					
 					cout << game3;
 					cin >> game3;
 					game3.game_over();
-					game3.get_winner();
-					gamestate = game3.game_over();
-				} while (gamestate == false);
-				{
 
+				} while (game3.game_over() == false);
+				{
+					winner.save_game(game3);
+					cout << game3;
+					cout << "winner is " << game3.get_winner() << "\n";
+					cout << winner;
 				}
 
-				cout << game3;
-
-				cout << winner;
+				
 			}
 			else if (size == 4)
 			{
@@ -67,18 +67,17 @@ int main()
 				}
 				do
 				{
-					winner.save_game(game4);
 					cout << game4;
 					cin >> game4;
 					game4.game_over();
 
 				} while (game4.game_over() == false);
 				{
-
+					winner.save_game(game4);
+					cout << game4;
+					cout << "winner is " << game4.get_winner() << "\n";
+					cout << winner;
 				}
-				winner.save_game(game4);
-				cout << game4;
-				game4.get_winner();
 				cout << winner;
 			}
 
@@ -97,7 +96,6 @@ int main()
 
 	}
 
-	cout << winner;
 
 	return 0;
 }

@@ -24,7 +24,7 @@ int main()
 	cout << "Value of ptr_p points to: " << *ptr_p << "\n";
 	cout << "Value of p: " << p << "\n\n";
 
-	int* ptr = 5;
+	
 
 
 	return 0;
