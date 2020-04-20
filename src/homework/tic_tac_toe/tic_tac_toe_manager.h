@@ -6,7 +6,7 @@
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_3.h"
 
-class TicTacToeManager: public tictactoe
+class TicTacToeManager
 {
 public:
 	

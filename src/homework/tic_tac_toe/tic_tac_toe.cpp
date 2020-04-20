@@ -121,15 +121,7 @@ std::istream & operator>>(std::istream & in, tictactoe & d)
 	int position;
 	cout << "Enter Position between 1- "<<d.pegs.size()<<"\n";
 	in >> position;
-	try
-	{
-		d.mark_board(position);
-
-	}
-	catch (Invalid e)
-	{
-		cout << e.get_error() << "\n";
-	}
+	d.mark_board(position);
 
 	return in;
 }

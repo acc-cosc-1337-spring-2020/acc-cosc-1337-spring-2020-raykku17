@@ -13,11 +13,12 @@ int main()
 	char choice;
 	string letter;
 	int mark;
-	auto player = start.get_player();
+	
 	int size;
 	bool gamestate = true;
 	do
 	{
+		string player;
 		cout << "Player One select gamesize 3 or 4 " << "\n";
 		cin >> size;
 		do
@@ -25,22 +26,30 @@ int main()
 			if (size == 3)
 			{
 				tictactoe3 game3;
-				try
+				while (!(player == "X" || player == "O"))
 				{
-					cout << "Player One select X or O " << "\n";
-					cin >> player;
-					game3.start_game(player);
-				}
-				catch (Invalid e)
-				{
-					cout << e.get_error() << "\n";
+					try
+					{
+						cout << "Player One select X or O " << "\n";
+						cin >> player;
+						game3.start_game(player);
+					}
+					catch (Invalid e)
+					{
+						cout << e.get_error() << "\n";
+					}
 				}
 				do
 				{
-					
-					cout << game3;
-					cin >> game3;
-					game3.game_over();
+					try
+					{
+						cout << game3;
+						cin >> game3;
+					}
+					catch (Invalid e)
+					{
+						cout << e.get_error() << "\n";
+					}
 
 				} while (game3.game_over() == false);
 				{
@@ -55,21 +64,31 @@ int main()
 			else if (size == 4)
 			{
 				tictactoe4 game4;
-				try
+				while (!(player == "X" || player == "O"))
 				{
-					cout << "Player One select X or O " << "\n";
-					cin >> player;
-					game4.start_game(player);
-				}
-				catch (Invalid e)
-				{
-					cout << e.get_error() << "\n";
+					try
+					{
+						cout << "Player One select X or O " << "\n";
+						cin >> player;
+						game4.start_game(player);
+					}
+					catch (Invalid e)
+					{
+						cout << e.get_error() << "\n";
+					}
 				}
 				do
 				{
-					cout << game4;
-					cin >> game4;
-					game4.game_over();
+					try
+					{
+						cout << game4;
+						cin >> game4;
+					}
+					catch (Invalid e)
+					{
+						cout << e.get_error() << "\n";
+					}
+
 
 				} while (game4.game_over() == false);
 				{
@@ -82,9 +101,7 @@ int main()
 			}
 
 		} while (!(size == 3 || size == 4));
-		{
-
-		}
+		
 
 
 		cout << "continue? Y or N.";
@@ -92,9 +109,7 @@ int main()
 
 
 	} while (choice == 'Y' || choice == 'y');
-	{
-
-	}
+	
 
 
 	return 0;
