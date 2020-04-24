@@ -1,4 +1,5 @@
 #include "vector.h"
+#include <iostream>
 
 /*
 Initialize nums to size(sz) dynamic array.
@@ -25,4 +26,46 @@ Vector::Vector(const Vector & v)
 		{
 			nums[i] = v[i];
 		}
+	/*
+	Allocate temporary dynamic array of size v(v1)
+	Copy v1 elements to temp array
+	Deallocate old v2 nums array
+	Point v2 nums array to temp array 
+	Set v2 size to v1 size
+	Return a self copy of Vector
+	*/
+}
+Vector & Vector::operator=(const Vector & v)
+{
+	int* temp = new int[v.size];
+
+	for (size_t i = 0; i < v.size; ++i)
+	{
+		temp[i] = v[i];
+	}
+
+	delete nums;
+
+	nums = temp;
+	size = v.size;
+
+	return *this;   //sends back a copy of itself(needs the *)
+}
+/*
+Release dynamic memory
+Deallocate memory
+*/
+Vector::~Vector()
+{
+	std::cout << "\nrelease memory\n";
+	delete[] nums;
+}
+//====================
+//free function
+
+void use_vector()
+{
+	Vector* v1 = new Vector(3);
+	delete v1;
+	v1 = nullptr;//<--- makes sure v1 points to nothing
 }
