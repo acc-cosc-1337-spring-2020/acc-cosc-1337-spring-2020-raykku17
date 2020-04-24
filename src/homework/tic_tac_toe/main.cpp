@@ -1,116 +1,79 @@
-#include"tic_tac_toe.h"
-#include"tic_tac_toe_manager.h"
-#include"tic_tac_toe_3.h"
-#include"tic_tac_toe_4.h"
+#include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
+#include<iostream>
+#include<memory>
 
-#include <iostream>
-using std::cout; using std::cin;
+using std::cout; using std::cin; using std::string;
+using std::unique_ptr; using std::make_unique;
+
 int main()
 {
-
-	tictactoe start;
-	TicTacToeManager winner;
-	char choice;
-	string letter;
-	int mark;
+	unique_ptr<TicTacToeManager> manager = make_unique<TicTacToeManager>();
 	
-	int size;
-	bool gamestate = true;
+	string cont;
+	std::vector<std::unique_ptr <tictactoe>>games;
+
 	do
 	{
-		string player;
-		cout << "Player One select gamesize 3 or 4 " << "\n";
-		cin >> size;
+		int game_type;
+		cout << "\n Tictactoe 3 or 4?";
+		cin >> game_type;
+		unique_ptr<tictactoe3> game3 = make_unique<tictactoe3>();
+		unique_ptr<tictactoe4> game4 = make_unique<tictactoe4>();
+
+		if (game_type == 3)
+		{
+			std::move(game3);
+		}
+		else if (game_type == 4)
+		{
+			std::move(game4);
+		}
+		std::unique_ptr <tictactoe>game;
+		string player = "Y";
+
+		while (!(player == "O" || player == "X"))
+		{
+			try
+			{
+				cout << "Enter player: ";
+				cin >> player;
+
+				game->start_game(player);
+			}
+			catch (Invalid e)
+			{
+				cout << e.get_error();
+			}
+		}
+
+		int choice = 1;
+
 		do
 		{
-			if (size == 3)
+			try
 			{
-				tictactoe3 game3;
-				while (!(player == "X" || player == "O"))
-				{
-					try
-					{
-						cout << "Player One select X or O " << "\n";
-						cin >> player;
-						game3.start_game(player);
-					}
-					catch (Invalid e)
-					{
-						cout << e.get_error() << "\n";
-					}
-				}
-				do
-				{
-					try
-					{
-						cout << game3;
-						cin >> game3;
-					}
-					catch (Invalid e)
-					{
-						cout << e.get_error() << "\n";
-					}
-
-				} while (game3.game_over() == false);
-				{
-					winner.save_game(game3);
-					cout << game3;
-					cout << "winner is " << game3.get_winner() << "\n";
-					cout << winner;
-				}
-
-				
+				cin >> *game;
+				cout << game;
 			}
-			else if (size == 4)
+			catch (Invalid e)
 			{
-				tictactoe4 game4;
-				while (!(player == "X" || player == "O"))
-				{
-					try
-					{
-						cout << "Player One select X or O " << "\n";
-						cin >> player;
-						game4.start_game(player);
-					}
-					catch (Invalid e)
-					{
-						cout << e.get_error() << "\n";
-					}
-				}
-				do
-				{
-					try
-					{
-						cout << game4;
-						cin >> game4;
-					}
-					catch (Invalid e)
-					{
-						cout << e.get_error() << "\n";
-					}
-
-
-				} while (game4.game_over() == false);
-				{
-					winner.save_game(game4);
-					cout << game4;
-					cout << "winner is " << game4.get_winner() << "\n";
-					cout << winner;
-				}
-				cout << winner;
+				cout << e.get_error();
 			}
 
-		} while (!(size == 3 || size == 4));
-		
+		} while (!game->game_over());
 
+		manager->save_game(game);
 
-		cout << "continue? Y or N.";
-		cin >> choice;
+		cout << "\nWinner: " << game->get_winner() << "\n";
 
+		cout << "Enter Y to play again: ";
+		cin >> cont;
 
-	} while (choice == 'Y' || choice == 'y');
-	
+	} while (cont == "Y" || cont == "y");
 
+	cout << manager;
 
 	return 0;
 }
