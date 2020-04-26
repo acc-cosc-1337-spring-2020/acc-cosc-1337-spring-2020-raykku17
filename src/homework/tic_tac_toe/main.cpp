@@ -12,25 +12,23 @@ int main()
 	unique_ptr<TicTacToeManager> manager = make_unique<TicTacToeManager>();
 	
 	string cont;
-	std::vector<std::unique_ptr <tictactoe>>games;
 
 	do
 	{
 		int game_type;
 		cout << "\n Tictactoe 3 or 4?";
 		cin >> game_type;
-		unique_ptr<tictactoe3> game3 = make_unique<tictactoe3>();
-		unique_ptr<tictactoe4> game4 = make_unique<tictactoe4>();
+		unique_ptr<tictactoe> game;
 
 		if (game_type == 3)
 		{
-			std::move(game3);
+			game = make_unique<tictactoe3>();
 		}
 		else if (game_type == 4)
 		{
-			std::move(game4);
+			game = make_unique<tictactoe4>();
 		}
-		std::unique_ptr <tictactoe>game;
+
 		string player = "Y";
 
 		while (!(player == "O" || player == "X"))
@@ -55,7 +53,7 @@ int main()
 			try
 			{
 				cin >> *game;
-				cout << game;
+				cout << *game;
 			}
 			catch (Invalid e)
 			{
@@ -64,16 +62,16 @@ int main()
 
 		} while (!game->game_over());
 
-		manager->save_game(game);
-
 		cout << "\nWinner: " << game->get_winner() << "\n";
+
+		manager->save_game(game);
 
 		cout << "Enter Y to play again: ";
 		cin >> cont;
 
 	} while (cont == "Y" || cont == "y");
 
-	cout << manager;
+	cout << *manager;
 
 	return 0;
 }
