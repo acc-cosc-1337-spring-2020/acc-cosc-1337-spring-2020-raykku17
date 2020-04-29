@@ -11,13 +11,14 @@ using std::string;
 class tictactoe
 {
 public:
+	tictactoe(std::vector<string> p, string win) :pegs{ p }, winner{ win }{}
 	tictactoe() = default;
 	explicit tictactoe(int s) : pegs(s*s, " ") { }
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int position);
 	string get_player() const { return player; }
-
+	std::vector<string>get_pegs() const {return pegs;}
 	string get_winner() const { return winner; }
 	friend std::istream& operator>>(std::istream& in, tictactoe& d);
 	friend std::ostream& operator<<(std::ostream& out, const tictactoe& d);
