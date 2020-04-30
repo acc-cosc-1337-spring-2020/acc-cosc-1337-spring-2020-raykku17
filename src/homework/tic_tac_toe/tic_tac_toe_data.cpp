@@ -1,38 +1,60 @@
 #include "tic_tac_toe_data.h"
 #include <iomanip>
+#include<memory>
+
+using std::unique_ptr; using std::make_unique;
 //cpp
 
-void tictactoedata::save_pegs(const std::vector<string>& pgs)
+void tictactoedata::save_games(const std::vector<string>& games)
 {
-	std::ofstream file_out(file_name, std::ios_base::trunc);
-	for (auto pegs : pgs)
+	std::ofstream myfile;
+	myfile.open("tictactoe.dat");
+
+	for (auto i : pegs)
 	{ 
-		for (auto c:pgs)
+		for (auto c:games)
 		{
-			file_out << " ";
+			myfile << " ";
 		}
-		file_out << get_winner;
-		file_out << "\n";
+		myfile << get_winner();
+		myfile << "\n";
 	}
-	file_out.close();
+	myfile.close();
 }
 
 std::vector<std::unique_ptr<tictactoe>> tictactoedata::get_games()
 {
-	std::vector<std::unique_ptr<tictactoe>> tictactoe3;
-	std::vector<std::unique_ptr<tictactoe>> tictactoe4;
-	std::ifstream open_file("tictactoe.dat");
-	while (open_file.is_open)
+	std::vector<std::unique_ptr<tictactoe>> boards;
+	std::ifstream read_file("tictactoe.date");
+
+	string line;
+	std::vector<string> pegs;
+
+	while (read_file.is_open)
 	{
-		std::vector<string>ch;
-		string line;
-		while (std::getline(file_out, line))
+		
+		while (std::getline(read_file, line))
 		{
-			for (ch.begin(), ch.end())
+			for (auto ch = 0; ch < line.size - 1; ch++)
 			{
-				ch.push_back(line);
+				string stringch(1, ch);
+				pegs.push_back(stringch);
 			}
+			string winner = pegs[-1];
+			std::unique_ptr<tictactoe>board;
+
+			if (pegs.size == 9)
+			{
+				board = make_unique<tictactoe3>(pegs, winner);
+			}
+			else if (pegs.size == 16)
+			{
+				board = make_unique<tictactoe4>(pegs, winner);
+			}
+			boards.push_back(board);
 		}
+		read_file.close();
 	}
+	return boards;
 
 }

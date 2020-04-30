@@ -19,7 +19,7 @@ private:
 	int x_win{ 0 };
 	int tie{ 0 };
 	void update_winner_count(std::string winner);
-
+	tictactoedata data;
 };
 
 

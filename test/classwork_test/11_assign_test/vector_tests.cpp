@@ -29,10 +29,22 @@ TEST_CASE("Test class copy with dynamic memory(heap) variables")
 
 TEST_CASE("TEst class copy dynamic heap with 2 variable")
 {
-	Vector v1(2);
+	Vector v1(3); //<---modifying one array does not modify the other whether they have the same(number) or not
 	Vector v2(3);
 	v2 = v1;
 	v1[1] = 5;
 
-	REQUIRE(v1[1] == v2[2]);
+	REQUIRE(v1[1] != v2[2]);
+}
+
+TEST_CASE("TEst vector capacity and reserve")
+{
+	Vector v(3);
+	REQUIRE(v.Capacity() == 3);
+	REQUIRE(v.Size() == 3);
+
+	v.Reserve(6);
+	REQUIRE(v.Capacity() == 6);
+	REQUIRE(v.Size() == 3);
+
 }
