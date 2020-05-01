@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
+#include "tic_tac_toe_data.h"
+#include "tic_tac_toe_manager.h"
 using std::string;
 using std::vector;
 using std::string;

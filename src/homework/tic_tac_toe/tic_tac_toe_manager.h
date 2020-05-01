@@ -5,14 +5,15 @@
 #include <memory>
 #include <vector>
 #include "tic_tac_toe.h"
-#include "tic_tac_toe_3.h"
 
 class TicTacToeManager
 {
 public:
-	
+	TicTacToeManager() = default;
+	TicTacToeManager(tictactoedata& data);
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
 	void save_game(std::unique_ptr<tictactoe>& b);
+	~TicTacToeManager();
 private:
 	std::vector<std::unique_ptr <tictactoe>>games;
 	int o_win{ 0 };
