@@ -6,7 +6,7 @@ Initialize nums to size(sz) dynamic array.
 Initialize each array element to 0.
 */
 Vector::Vector(size_t sz)
-	:size{ sz }, nums{ new int[sz] }, space{ sz }
+	:size{ sz }, nums{ new int[sz] }, space{ sz } //<--initialize space to size as well
 {
 	for (size_t i = 0; i < sz; ++i)
 	{
@@ -109,6 +109,40 @@ void Vector::Reserve(size_t new_allocation)
 	nums = temp;
 
 	space = new_allocation;
+}
+
+/*
+Reserve space
+Initialize element values beyond size to zero
+*/
+void Vector::Resize(size_t new_size)
+{
+	Reserve(new_size);
+
+	for (size_t i = size; i < new_size; ++i)
+	{
+		nums[i] = 0;
+	}
+
+	size = new_size;
+}
+
+/*
+
+*/
+void Vector::Push_Back(int value)
+{
+	if(space == 0)
+	{
+		Reserve(RESERVE_DEFAULT_SIZE);
+	}
+	else if(size == space)
+	{
+		Reserve(space * RESERVE_DEFAULT_MULTIPLIER);
+	}
+
+	nums[size] = value;
+	++size;
 }
 
 /*
