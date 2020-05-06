@@ -7,25 +7,28 @@
 /*
 Rule of 3 of for c++ 98
 */
+template<typename T>
+
 class Vector
 {
 public:
+	Vector();
 	Vector(size_t sz);
-	Vector(const Vector& v); //copy constructor - Rule of 3
-	Vector& operator = (const Vector& v); //copy assignment - rule of 3
-	Vector(Vector&& v); //move constructor - Part of Rule of 5 - c++11
-	Vector&operator=(Vector&& v);//move assignment - Rule of 5 for c++ 11
+	Vector(const Vector<T>& v); //copy constructor - Rule of 3
+	Vector<T>& operator = (const Vector<T>& v); //copy assignment - rule of 3
+	Vector(Vector<T>&& v); //move constructor - Part of Rule of 5 - c++11
+	Vector<T>&operator=(Vector<T>&& v);//move assignment - Rule of 5 for c++ 11
 	size_t Size() const { return size; }
-	int& operator[](int i) { return nums[i]; } 
-	int& operator[](int i) const { return nums[i]; }
+	T& operator[](int i) { return nums[i]; } 
+	T& operator[](int i) const { return nums[i]; }
 	void Reserve(size_t new_allocation);
 	size_t Capacity() const { return space; }
 	void Resize(size_t new_size);
-	void Push_Back(int value);
+	void Push_Back(T value);
 	~Vector(); //destructor - rule of 3
 private:
 	size_t size;
-	int* nums;
+	T* nums;
 	size_t space{ 0 };
 	const int RESERVE_DEFAULT_SIZE{ 8 };
 	const int RESERVE_DEFAULT_MULTIPLIER{ 2 };
@@ -38,4 +41,4 @@ private:
 //free function
 void use_vector();
 
-Vector get_vector();
+Vector<int> get_vector();
