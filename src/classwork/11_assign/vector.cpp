@@ -7,7 +7,7 @@ Vector<T>::Vector()
 {
 
 }
-cfghbcfghbcfb ndtjh
+
 
 /*
 Initialize nums to size(sz) dynamic array.
