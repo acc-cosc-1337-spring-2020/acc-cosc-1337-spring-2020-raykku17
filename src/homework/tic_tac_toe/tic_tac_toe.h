@@ -10,7 +10,6 @@
 #include "tic_tac_toe_manager.h"
 using std::string;
 using std::vector;
-using std::string;
 
 class tictactoe
 {
